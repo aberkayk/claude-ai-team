@@ -2,46 +2,58 @@
 
 > **This file is the single source of truth for technology choices.**
 > All agents reference this file before writing code or making technical decisions.
->
-> This file should be filled in collaboration with the user at the start of each project.
-> If this file is empty or missing sections, the Project Manager agent will ask the user to define them.
 
 ## Frontend
 
-- Framework:
-- Language:
-- Styling:
-- State Management:
-- UI Component Library:
+- Framework: Next.js 15
+- Language: TypeScript
+- Styling: Tailwind CSS
+- UI Component Library: shadcn/ui
+- State Management: Zustand
+- Forms: React Hook Form + Zod
+- i18n: Custom solution (not next-intl, not locale-based routing). Turkish only at launch, infrastructure ready for multi-language.
 
 ## Backend
 
-- Runtime:
-- Framework:
-- Language:
-- ORM / Query Builder:
+- Runtime: Node.js 22
+- Framework: Express.js
+- Language: TypeScript
+- Validation: Zod
 
 ## Database
 
-- Primary:
-- Cache:
-- Search (optional):
+- Primary: PostgreSQL (via Supabase)
+- ORM: Drizzle ORM
+- Cache: Supabase (built-in), Redis if needed later
+- Auth: Supabase Auth
+
+## Payments
+
+- Provider: iyzico
+- Methods: Credit card, monthly invoice, per-order payment
+
+## Notifications
+
+- Email: Resend
+- WhatsApp: WhatsApp Business API (via Twilio or direct)
 
 ## Infrastructure
 
-- Hosting:
-- CI/CD:
-- Containerization:
-- Monitoring:
+- Frontend Hosting: Vercel
+- Backend Hosting: Railway
+- CI/CD: GitHub Actions
+- Monitoring: Sentry
+- File Storage: Supabase Storage
 
 ## Testing
 
-- Unit Test Framework:
-- E2E Test Framework:
-- Coverage Tool:
+- Unit Test Framework: Vitest
+- E2E Test Framework: Playwright
+- API Testing: Supertest
 
 ## Other
 
-- Package Manager:
-- Monorepo Tool (if applicable):
-- API Style: REST / GraphQL / tRPC
+- Package Manager: pnpm
+- Monorepo: Turborepo (apps/web, apps/api, packages/shared)
+- API Style: REST
+- API Documentation: Swagger/OpenAPI via swagger-jsdoc
