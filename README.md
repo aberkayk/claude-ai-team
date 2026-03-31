@@ -1,82 +1,87 @@
 # AI Software Team
 
-Yazilim gelistirme sureclerini AI agentlar ile yoneten multi-agent sistemi. Claude Code uzerinde calisir.
+A multi-agent system that manages software development processes with AI agents. Runs on Claude Code.
 
-## Ne Yapar?
+## What Does It Do?
 
-Bu proje, tam bir yazilim gelistirme takimini AI agentlar olarak tanimlar. Her agent kendi uzmanlik alaninda calisir ve Project Manager agent tarafindan koordine edilir.
+This project defines a complete software development team as AI agents. Each agent works within its area of expertise and is coordinated by the Project Manager agent.
 
-## Agentlar
+**Key feature:** Before starting any project, the system asks you which technologies you want to use and configures all agents accordingly.
 
-| Agent | Rol | Model |
-|-------|-----|-------|
-| **Project Manager** | Orkestrator — diger agentlari yonetir | Opus |
-| **Product Owner** | Kullanici hikayeleri ve onceliklendirme | Sonnet |
-| **Business Analyst** | Gereksinim analizi ve dokumantasyon | Sonnet |
-| **System Architect** | Mimari tasarim ve teknoloji kararlari | Opus |
-| **UI Designer** | Arayuz tasarimi ve kullanici deneyimi | Sonnet |
-| **Frontend Developer** | Arayuz gelistirme | Sonnet |
-| **Backend Developer** | Sunucu tarafı gelistirme | Sonnet |
-| **DBA** | Veritabani tasarimi ve optimizasyonu | Sonnet |
-| **DevOps Engineer** | CI/CD, altyapi ve deployment | Sonnet |
-| **Security Engineer** | Guvenlik analizi ve denetimi | Sonnet |
-| **QA Tester** | Test planlama ve otomasyon | Sonnet |
-| **Code Reviewer** | Kod kalite kontrolu | Opus |
-| **Technical Writer** | Dokumantasyon | Sonnet |
+## Agents
 
-## Kurulum
+| Agent | Role | Model |
+|-------|------|-------|
+| **Project Manager** | Orchestrator — manages all other agents | Opus |
+| **Product Owner** | User stories and prioritization | Sonnet |
+| **Business Analyst** | Requirements analysis and documentation | Sonnet |
+| **System Architect** | Architecture design and technology decisions | Opus |
+| **UI Designer** | Interface design and user experience | Sonnet |
+| **Frontend Developer** | Frontend development | Sonnet |
+| **Backend Developer** | Server-side development | Sonnet |
+| **DBA** | Database design and optimization | Sonnet |
+| **DevOps Engineer** | CI/CD, infrastructure, and deployment | Sonnet |
+| **Security Engineer** | Security analysis and auditing | Sonnet |
+| **QA Tester** | Test planning and automation | Sonnet |
+| **Code Reviewer** | Code quality control | Opus |
+| **Technical Writer** | Documentation | Sonnet |
 
-### On Kosullar
-- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) kurulu olmali
-- Anthropic API anahtari tanimli olmali
+## Setup
 
-### Kullanim
+### Prerequisites
+- [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed
+- Anthropic API key configured
 
-1. Bu repoyu klonlayin:
+### Usage
+
+1. Clone this repo:
 ```bash
 git clone https://github.com/[username]/ai-software-team.git
 cd ai-software-team
 ```
 
-2. Claude Code'u baslatin:
+2. Start Claude Code:
 ```bash
 claude
 ```
 
-3. Bir gorev verin:
+3. Give a task:
 ```
-PM agent'i calistir: Kullanici kayit sistemi gelistir
-```
-
-Veya belirli bir agent'i dogrudan kullanin:
-```
-System architect: E-ticaret uygulamasi icin mimari tasarla
+Run PM agent: Build a user registration system
 ```
 
-## Is Akisi
+The PM agent will first ask you about your preferred tech stack, then orchestrate the entire development process.
+
+You can also run a specific agent directly:
+```
+System architect: Design architecture for an e-commerce app
+```
+
+## Workflow
 
 ```
-Siz ──► Project Manager
+You ──► Project Manager
               │
-              ├─► Product Owner ──► Kullanici hikayeleri
-              ├─► Business Analyst ──► Gereksinimler
-              ├─► System Architect ──► Mimari
-              ├─► UI Designer ──► Tasarim
-              ├─► DBA ──► Veritabani semasi
-              ├─► Backend Developer ──► API kodu
-              ├─► Frontend Developer ──► Arayuz kodu
-              ├─► Code Reviewer ──► Kod incelemesi
-              ├─► QA Tester ──► Testler
-              ├─► Security Engineer ──► Guvenlik raporu
-              ├─► DevOps Engineer ──► CI/CD & deploy
-              └─► Technical Writer ──► Dokumantasyon
+              ├─0─► Asks YOU for tech stack preferences
+              ├─1─► Product Owner ──► User stories
+              ├─2─► Business Analyst ──► Requirements
+              ├─3─► System Architect ──► Architecture
+              ├─4─► UI Designer ──► Design
+              ├─5─► DBA ──► Database schema
+              ├─6─► Backend Developer ──► API code
+              ├─6─► Frontend Developer ──► UI code (parallel)
+              ├─7─► Code Reviewer ──► Code review
+              ├─8─► QA Tester ──► Tests
+              ├─9─► Security Engineer ──► Security report
+              ├─10► DevOps Engineer ──► CI/CD & deploy
+              └─11► Technical Writer ──► Documentation
 ```
 
-## Proje Yapisi
+## Project Structure
 
 ```
 .claude/
-└── agents/          # Agent tanimlari
+└── agents/                          # Agent definitions
     ├── project-manager.md
     ├── product-owner.md
     ├── business-analyst.md
@@ -91,22 +96,21 @@ Siz ──► Project Manager
     ├── code-reviewer.md
     └── technical-writer.md
 docs/
-├── architecture/    # Mimari kararlar (ADR)
-├── requirements/    # Gereksinim dokumanlari
-├── design/          # UI/UX tasarim dokumanlari
-├── api/             # API dokumantasyonu
-└── testing/         # Test planlari ve raporlari
+├── architecture/
+│   └── tech-stack.md                # Technology choices (filled with user)
+├── requirements/                    # Requirements documents
+├── design/                          # UI/UX design documents
+├── api/                             # API documentation
+└── testing/                         # Test plans and reports
 ```
 
-## Ozellestirme
+## Customization
 
-Her agent dosyasini projenize ozel olarak duzenleyebilirsiniz:
+- **Change tech stack:** Edit `docs/architecture/tech-stack.md` or let the PM agent ask you
+- **Add a new agent:** Create a new `.md` file under `.claude/agents/`
+- **Change model:** Update the `model` field in agent frontmatter (opus/sonnet/haiku)
+- **Restrict tools:** Add/remove tools from the `tools` list in agent frontmatter
 
-- **Tech stack degisikligi:** Agent prompt'larindaki teknoloji referanslarini guncelleyin
-- **Yeni agent ekleme:** `.claude/agents/` altina yeni `.md` dosyasi olusturun
-- **Model degisikligi:** Agent frontmatter'indaki `model` alanini degistirin (opus/sonnet/haiku)
-- **Arac kisitlama:** `tools` listesinden araclari ekleyin/cikarin
-
-## Lisans
+## License
 
 MIT

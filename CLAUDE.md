@@ -1,40 +1,41 @@
 # AI Software Team
 
-Bu proje, yazilim gelistirme sureclerini AI agentlar ile yoneten bir multi-agent sistemidir.
+A multi-agent system that manages software development processes with AI agents. Runs on Claude Code.
 
-## Proje Yapisi
+## Project Structure
 
-- `.claude/agents/` — Tum agent tanimlari
-- `docs/` — Proje dokumantasyonu
-  - `docs/architecture/` — Mimari kararlar (ADR formati)
-  - `docs/requirements/` — Gereksinim dokumanlari
-  - `docs/design/` — UI/UX tasarim dokumanlari
-  - `docs/api/` — API dokumantasyonu
-  - `docs/testing/` — Test planlari ve raporlari
+- `.claude/agents/` — All agent definitions
+- `docs/` — Project documentation
+  - `docs/architecture/` — Architecture Decision Records (ADR)
+  - `docs/requirements/` — Requirements documents
+  - `docs/design/` — UI/UX design documents
+  - `docs/api/` — API documentation
+  - `docs/testing/` — Test plans and reports
 
-## Calisma Kurallari
+## Working Rules
 
-1. Her agent sadece kendi sorumluluk alaninda islem yapar
-2. Agentlar arasi iletisim Project Manager uzerinden koordine edilir
-3. Tum kararlar `docs/` altinda dokumante edilir
-4. Kod degisiklikleri Code Reviewer onayindan gecer
-5. Guvenlik kontrolleri her deploy oncesi yapilir
+1. Each agent operates only within its area of responsibility
+2. Inter-agent communication is coordinated through the Project Manager
+3. All decisions are documented under `docs/`
+4. Code changes go through Code Reviewer approval
+5. Security checks are performed before every deployment
+6. Before starting any project, the tech stack must be confirmed with the user via `docs/architecture/tech-stack.md`
 
-## Agent Kullanimi
+## Agent Usage
 
-Yeni bir ozellik gelistirmek icin:
+To develop a new feature:
 ```
-"PM agent'i calistir: [ozellik aciklamasi]"
-```
-
-Belirli bir agent'i dogrudan calistirmak icin:
-```
-"Backend developer: [gorev aciklamasi]"
+Run PM agent: [feature description]
 ```
 
-## Konvansiyonlar
+To run a specific agent directly:
+```
+Backend developer: [task description]
+```
 
-- Dokumanlar Turkce yazilir
-- Kod yorumlari Ingilizce yazilir
-- Commit mesajlari Conventional Commits formatinda olur
-- Branch isimleri: `feature/`, `bugfix/`, `hotfix/` prefix'leri kullanir
+## Conventions
+
+- All documentation is written in English
+- Code comments in English
+- Commit messages follow Conventional Commits format
+- Branch names use `feature/`, `bugfix/`, `hotfix/` prefixes
